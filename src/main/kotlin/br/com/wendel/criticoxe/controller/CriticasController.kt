@@ -1,10 +1,12 @@
 package br.com.wendel.criticoxe.controller
 
+import br.com.wendel.criticoxe.dto.AtualizacaoCriticaForm
 import br.com.wendel.criticoxe.dto.CriticaForm
 import br.com.wendel.criticoxe.dto.CriticaView
 import br.com.wendel.criticoxe.model.*
 import br.com.wendel.criticoxe.service.CriticaService
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 
 @RestController
@@ -22,7 +24,13 @@ class CriticasController(private val service: CriticaService) {
     }
 
         @PostMapping
-        fun cadastrar(@RequestBody dto : CriticaForm){
+        fun cadastrar(@RequestBody @Valid dto : CriticaForm){
             service.cadastrar(dto)
         }
+    @PutMapping
+    fun atualizar (@RequestBody @Valid form : AtualizacaoCriticaForm){
+        service.atualizar(form)
+    }
+
+
 }
