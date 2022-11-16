@@ -11,7 +11,7 @@ class UsuarioService (var usuarios : List<Usuario>) {
     init {
         val usuario= Usuario (
             id =1,
-            nome = "Capitaes de Areia",
+            nome = "Gal Meirelles",
             email= "umemaillegal@coisa.com"
         )
         usuarios = Arrays.asList(usuario)

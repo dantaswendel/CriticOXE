@@ -1,37 +1,39 @@
 package br.com.wendel.criticoxe.service
 
-import br.com.wendel.criticoxe.dto.CriticaDto
+import br.com.wendel.criticoxe.dto.CriticaForm
+import br.com.wendel.criticoxe.dto.CriticaView
+import br.com.wendel.criticoxe.mapper.CriticaFormMapper
+import br.com.wendel.criticoxe.mapper.CriticaViewMapper
 import br.com.wendel.criticoxe.model.Critica
 import org.springframework.stereotype.Service
 import java.util.*
+import java.util.stream.Collectors
 
 
 @Service
 class CriticaService (
     private var criticas: List<Critica> = ArrayList(),
-    private val livroService : LivroService,
-    private val usuarioService: UsuarioService
+
+    private val criticaviewMapper: CriticaViewMapper,
+    private val criticaformMapper: CriticaFormMapper
 ) {
 
-   fun listar(): List<Critica> {
-return criticas
+   fun listar(): List<CriticaView>? {
+return criticas.stream().map {
+        c -> criticaviewMapper.map(c) }.collect(Collectors.toList()) }
+
+    fun buscarporId(id: Long): CriticaView {
+        val crtc = criticas.stream().filter{ c ->
+            c.id == id
+
+        }.findFirst().get()
+         return criticaviewMapper.map(crtc)
+
     }
-
-    fun buscarporId(id: Long): Critica {
-return criticas.stream().filter({
-    t -> t.id == id
-
-}).findFirst().get()
-    }
-
-    fun cadastrar(dto: CriticaDto) {
-criticas.plus(Critica(
-    id = criticas.size.toLong() +1,
-    titulo =dto.titulo,
-    texto = dto.texto,
-    livro = livroService.buscarPorId(dto.idLivro),
-    usuario = usuarioService.buscarPorId(dto.idUsuario)
-))
+    fun cadastrar(form: CriticaForm) {
+        val critica = criticaformMapper.map(form)
+        critica.id = criticas.size.toLong() +1
+ criticas = criticas.plus(criticaformMapper.map(form))
     }
 
 }

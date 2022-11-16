@@ -14,13 +14,7 @@ class LivroService(var livros : List<Livro>) {
         autor= "Jorginho Amado",
         Genero= "Romance"
                 )
-        val livro= Livro (
-            id =2,
-            nome = "Memorias Postumas",
-            autor= "Machado de Assis",
-            Genero= "Romance"
-        )
-        livros = Arrays.asList(livro)
+                livros = Arrays.asList(livro)
 
     }
 

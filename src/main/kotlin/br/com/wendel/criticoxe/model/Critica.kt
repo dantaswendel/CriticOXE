@@ -3,7 +3,7 @@ package br.com.wendel.criticoxe.model
 import java.time.LocalDateTime
 
 data class Critica @JvmOverloads constructor(
-    val id: Long? = null,
+    var id: Long? = null,
     val titulo: String,
     val texto: String,
     val dataCriacao: LocalDateTime = LocalDateTime.now(),
