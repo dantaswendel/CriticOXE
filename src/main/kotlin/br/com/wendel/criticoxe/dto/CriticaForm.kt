@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 
 data class CriticaDto (
 
-    val id: Long? = null,
+    val id : Long?,
     val titulo: String,
     val texto: String,
     val idLivro: Long,
