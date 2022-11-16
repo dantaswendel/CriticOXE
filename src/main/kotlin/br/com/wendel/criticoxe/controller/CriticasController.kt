@@ -32,5 +32,11 @@ class CriticasController(private val service: CriticaService) {
         service.atualizar(form)
     }
 
+    @DeleteMapping ("/{id}")
+    fun deletar (@PathVariable id : Long){
+        service.deletar(id)
+
+    }
+
 
 }

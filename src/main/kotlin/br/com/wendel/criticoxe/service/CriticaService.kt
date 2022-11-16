@@ -58,4 +58,13 @@ return criticas.stream().map {
         )
     }
 
+    fun deletar(id: Long) {
+
+        val crtc = criticas.stream().filter{ c ->
+            c.id == id
+        }.findFirst().get()
+        criticas = criticas.minus(crtc)
+
+    }
+
 }
