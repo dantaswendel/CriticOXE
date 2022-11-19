@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 class CriticaViewMapper : Mapper<Critica,CriticaView> {
     override fun map(c: Critica): CriticaView {
         return CriticaView (
-
+            id = c.id,
             titulo = c.titulo,
             texto = c.texto,
             dataCriacao =c.dataCriacao,

@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 
 data class CriticaView (
 
-
+    val id : Long?,
     val titulo: String,
     val texto: String,
     val dataCriacao: LocalDateTime,

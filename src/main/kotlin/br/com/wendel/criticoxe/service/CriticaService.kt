@@ -15,7 +15,7 @@ import java.util.stream.Collectors
 class CriticaService (
     private var criticas: List<Critica> = ArrayList(),
     private val criticaviewMapper: CriticaViewMapper,
-    private val criticaformMapper: CriticaFormMapper
+    private val criticaformMapper : CriticaFormMapper,
 
 ) {
 
@@ -31,10 +31,11 @@ return criticas.stream().map {
          return criticaviewMapper.map(crtc)
 
     }
-    fun cadastrar(form: CriticaForm) {
+    fun cadastrar(form: CriticaForm): CriticaView {
         val critica = criticaformMapper.map(form)
         critica.id = criticas.size.toLong() +1
  criticas = criticas.plus(criticaformMapper.map(form))
+        return criticaviewMapper.map(critica)
     }
 
     fun atualizar( form : AtualizacaoCriticaForm){

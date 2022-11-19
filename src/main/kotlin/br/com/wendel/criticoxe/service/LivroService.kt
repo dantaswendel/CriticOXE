@@ -11,7 +11,7 @@ class LivroService(var livros : List<Livro>) {
         val livro= Livro (
         id =1,
         nome = "Capitães de Areia",
-        autor= "Jorginho Amado",
+        escritor= "Jorginho Amado",
         Genero= "Romance"
                 )
                 livros = Arrays.asList(livro)
