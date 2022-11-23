@@ -7,8 +7,8 @@ import javax.persistence.*
 data class Critica @JvmOverloads constructor(
    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
      var id: Long? = null,
-    val titulo: String,
-    val texto: String,
+    var titulo: String,
+    var texto: String,
     val dataCriacao: LocalDateTime = LocalDateTime.now(),
    @ManyToOne
     val livro:Livro,

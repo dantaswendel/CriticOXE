@@ -1,27 +1,14 @@
 package br.com.wendel.criticoxe.service
 
 import br.com.wendel.criticoxe.model.Livro
+import br.com.wendel.criticoxe.repository.LivroRepository
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service
-class LivroService(var livros : List<Livro>) {
+class LivroService(private val repository:LivroRepository) {
 
-    init {
-        val livro= Livro (
-        id =1,
-        nome = "Capitães de Areia",
-        escritor= "Jorginho Amado",
-        Genero= "Romance"
-                )
-                livros = Arrays.asList(livro)
-
-    }
-
-    fun buscarPorId (id : Long) : Livro {
-        return  livros.stream().filter({
-            l -> l.id == id
-        }).findFirst().get()
+      fun buscarPorId (id : Long) : Livro {
+        return repository.getOne(id)
     }
 
 }
